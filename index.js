@@ -13,7 +13,7 @@
             disallow = params.disallow || '/cgi-bin/',
             url = params.url,
             out = params.out || 'robots.txt',
-            config = '# ' + header + '\n\nUser-agent: ' + allow + '\nDisallow: ' + disallow + '\nSitemap: ' + url + '/sitemap.xml';
+            config = '# ' + header + '\n\nUser-agent: ' + allow + '\nDisallow: ' + disallow + '\nSitemap: ' + url + 'sitemap.xml';
 
         if (!url) {
             console.log('URL is a required parameter.');
