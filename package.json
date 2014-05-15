@@ -1,0 +1,22 @@
+{
+  "name": "robots",
+  "version": "1.0.0",
+  "description": "Robots.txt generator for Node.js",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haydenbleasel/robots.git"
+  },
+  "keywords": [
+    "robots",
+    "txt",
+    "generator",
+    "node"
+  ],
+  "author": "Hayden Bleasel <haydenbleasel@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haydenbleasel/robots/issues"
+  },
+  "homepage": "https://github.com/haydenbleasel/robots"
+}
