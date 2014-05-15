@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/haydenbleasel/robots.git"
   },
-   "scripts": {
+  "scripts": {
     "test": "node test.js"
   },
   "keywords": [
@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/haydenbleasel/robots/issues"
   },
-  "homepage": "https://github.com/haydenbleasel/robots"
+  "homepage": "https://github.com/haydenbleasel/robots",
+  "devDependencies": {
+    "lodash.defaults": "^2.4.1"
+  }
 }

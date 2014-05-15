@@ -4,22 +4,26 @@
 (function () {
 
     'use strict';
+
+    var fs = require('fs'),
+        defaults = require('lodash.defaults');
     
     module.exports = function (params) {
 
-        var fs = require('fs'),
-            header = params.header || 'robots.txt',
-            allow = params.allow || '*',
-            disallow = params.disallow || '/cgi-bin/',
-            url = params.url,
-            out = params.out || 'robots.txt',
-            config = '# ' + header + '\n\nUser-agent: ' + allow + '\nDisallow: ' + disallow + '\nSitemap: ' + url + 'sitemap.xml';
+        var options = defaults(params || {}, {
+            header: 'robots.txt',
+            allow: '*',
+            disallow: '/cgi-bin/',
+            url: null,
+            out: 'robots.txt'
+        });
 
-        if (!url) {
+        if (!options.url) {
             console.log('URL is a required parameter.');
             return false;
         } else {
-            fs.writeFile(out, config, function (err) {
+            var config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nSitemap: ' + options.url + 'sitemap.xml';
+            fs.writeFile(options.out, config, function (err) {
                 if (err) {
                     console.log(err);
                 } else {
