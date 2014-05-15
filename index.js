@@ -17,13 +17,14 @@
             url: null,
             delay: 0,
             out: 'robots.txt'
-        });
+        }),
+            config;
 
         if (!options.url) {
             console.log('URL is a required parameter.');
             return false;
         } else {
-            var config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nCrawl-delay: ' + options.delay + '\nSitemap: ' + options.url + 'sitemap.xml';
+            config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nCrawl-delay: ' + options.delay + '\nSitemap: ' + options.url + 'sitemap.xml';
             fs.writeFile(options.out, config, function (err) {
                 if (err) {
                     console.log(err);
