@@ -15,6 +15,7 @@
             allow: '*',
             disallow: '/cgi-bin/',
             url: null,
+            delay: 0,
             out: 'robots.txt'
         });
 
@@ -22,7 +23,7 @@
             console.log('URL is a required parameter.');
             return false;
         } else {
-            var config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nSitemap: ' + options.url + 'sitemap.xml';
+            var config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nCrawl-delay: ' + options.delay + '\nSitemap: ' + options.url + 'sitemap.xml';
             fs.writeFile(options.out, config, function (err) {
                 if (err) {
                     console.log(err);
