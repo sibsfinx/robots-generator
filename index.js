@@ -7,32 +7,49 @@
 
     var fs = require('fs'),
         defaults = require('lodash.defaults');
-    
+
     module.exports = function (params) {
 
         var options = defaults(params || {}, {
-            header: 'robots.txt',
-            allow: '*',
-            disallow: '/cgi-bin/',
+            useragent: '*',
+            allow: null,
+            disallow: 'cgi-bin/',
             url: null,
-            delay: 0,
             out: 'robots.txt'
         }),
-            config;
+            config,
+            i,
+            add = function (name, rule) {
+                if (rule) {
+                    if (typeof rule === 'string') {
+                        config += '\n' + name + ': ' + rule;
+                    } else {
+                        for (i = 0; i < rule.length; i += 1) {
+                            config += '\n' + name + ': ' + rule[i];
+                        }
+                    }
+                }
+            }
 
         if (!options.url) {
             console.log('URL is a required parameter.');
             return false;
-        } else {
-            config = '# ' + options.header + '\n\nUser-agent: ' + options.allow + '\nDisallow: ' + options.disallow + '\nCrawl-delay: ' + options.delay + '\nSitemap: ' + options.url + 'sitemap.xml';
-            fs.writeFile(options.out, config, function (err) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log('Generated robots.txt');
-                }
-            });
         }
+
+        config = 'User-agent: ' + options.useragent;
+
+        add('Allow', options.allow);
+        add('Disallow', options.disallow);
+
+        config += '\nSitemap: ' + options.url + 'sitemap.xml';
+
+        fs.writeFile(options.out, config, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Generated robots.txt');
+            }
+        });
 
     };
 
