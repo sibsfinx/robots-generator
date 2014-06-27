@@ -15,7 +15,8 @@
             allow: null,
             disallow: 'cgi-bin/',
             url: null,
-            out: 'robots.txt'
+            out: 'robots.txt',
+            callback: null
         }),
             config,
             i,
@@ -45,6 +46,9 @@
                 console.log(err);
             } else {
                 console.log('Generated robots.txt');
+            }
+            if (options.callback) {
+                return options.callback();
             }
         });
 
