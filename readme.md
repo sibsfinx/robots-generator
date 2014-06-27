@@ -20,7 +20,7 @@ Allow and Disallow can be an array, a string or null (not added to the file). De
 var robots = require('robots-generator');
 
 robots({
-  useragent: '*'
+  useragent: '*',
   allow: null,
   disallow: 'cgi-bin/',
   url: null,
