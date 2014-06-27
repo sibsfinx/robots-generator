@@ -29,19 +29,16 @@
                         }
                     }
                 }
-            }
-
-        if (!options.url) {
-            console.log('URL is a required parameter.');
-            return false;
-        }
+            };
 
         config = 'User-agent: ' + options.useragent;
 
         add('Allow', options.allow);
         add('Disallow', options.disallow);
 
-        config += '\nSitemap: ' + options.url + 'sitemap.xml';
+        if (options.url) {
+            config += '\nSitemap: ' + options.url + 'sitemap.xml';
+        }
 
         fs.writeFile(options.out, config, function (err) {
             if (err) {
