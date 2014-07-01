@@ -42,13 +42,8 @@
         }
 
         fs.writeFile(options.out, config, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('Generated robots.txt');
-            }
             if (options.callback) {
-                return options.callback();
+                return options.callback(err, 'Generated robots.txt');
             }
         });
 
