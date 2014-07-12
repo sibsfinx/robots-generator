@@ -17,10 +17,12 @@
             allow: null,
             disallow: 'cgi-bin/',
             url: null,
-            out: 'robots.txt',
+            out: 'dist',
             callback: null
         }),
-            config = 'User-agent: ' + options.useragent;
+            config = 'User-agent: ' + options.useragent,
+            directory = path.normalize(options.out),
+            file = directory + '/robots.txt';
 
         function add(name, rule) {
             var i;
@@ -36,8 +38,6 @@
         }
 
         (function () {
-            var output = path.normalize(options.out),
-                directory = path.dirname(output);
 
             add('Allow', options.allow);
             add('Disallow', options.disallow);
@@ -52,7 +52,7 @@
                     return;
                 }
 
-                fs.writeFile(options.out, config, function (err) {
+                fs.writeFile(file, config, function (err) {
                     if (options.callback) {
                         return options.callback(err, 'Generated robots.txt');
                     }
