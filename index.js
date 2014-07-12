@@ -22,7 +22,7 @@
         }),
             config = 'User-agent: ' + options.useragent,
             directory = path.normalize(options.out),
-            file = directory + '/robots.txt';
+            file = 'robots.txt';
 
         function add(name, rule) {
             var i;
@@ -52,7 +52,7 @@
                     return;
                 }
 
-                fs.writeFile(file, config, function (err) {
+                fs.writeFile(directory + '/' + file, config, function (err) {
                     if (options.callback) {
                         return options.callback(err, 'Generated robots.txt');
                     }
