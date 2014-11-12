@@ -13,7 +13,7 @@ Simply require the module and execute it with an optional array of configuration
 - Disallow: A directory or set of directories that a crawler is not allowed to access.
 - URL: Your website's URL (required, used for sitemap reference).
 - Out: The destination path.
-- Callback: Function to execute upon completion (parameters are 'error' and 'response').
+- Callback: Function to execute upon completion (parameters are 'error' and 'file').
 
 Allow and Disallow can be an array, a string or null (not added to the file). Defaults are shown below:
 
