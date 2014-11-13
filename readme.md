@@ -25,7 +25,7 @@ robots({
   allow: null,
   disallow: 'cgi-bin/',
   url: null,
-  out: 'dist',
+  out: null,
   callback: null
 });
 ```
