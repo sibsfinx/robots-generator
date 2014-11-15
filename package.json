@@ -1,6 +1,6 @@
 {
   "name": "robots-generator",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Robots.txt generator for Node.js",
   "main": "index.js",
   "repository": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/haydenbleasel/robots-generator",
   "dependencies": {
-    "mkdirp": "^0.5.0",
-    "underscore": "^1.7.0"
+    "mkdirp": "*",
+    "underscore": "*"
   }
 }
