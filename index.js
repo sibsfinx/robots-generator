@@ -30,9 +30,7 @@
 
         (function () {
 
-            var config = 'User-agent: ' + options.useragent,
-                file = 'robots.txt',
-                directory;
+            var config = 'User-agent: ' + options.useragent;
 
             config = add('Allow', options.allow, config);
             config = add('Disallow', options.disallow, config);
@@ -42,12 +40,11 @@
             }
 
             if (options.out) {
-                directory = path.normalize(options.out);
-                mkdirp(path.normalize(options.out), function (err) {
+                mkdirp(path.dirname(options.out), function (err) {
                     if (err) {
                         throw err;
                     }
-                    fs.writeFile(directory + '/' + file, config, function (err) {
+                    fs.writeFile(options.out, config, function (err) {
                         if (options.callback) {
                             return options.callback(err, config);
                         }
