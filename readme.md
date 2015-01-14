@@ -1,4 +1,4 @@
-# Robots Generator [![Build Status](https://travis-ci.org/haydenbleasel/robots-generator.svg?branch=node)](https://travis-ci.org/haydenbleasel/robots-generator)
+# Robots Generator [![Build Status](https://travis-ci.org/haydenbleasel/robots-generator.svg?branch=master)](https://travis-ci.org/haydenbleasel/robots-generator)
 
 Robots.txt generator for Node.js. Produces a simple, valid robots.txt to be parsed by web crawlers. Adheres to the [specification](https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt) provided by Google, however currently only supports one User-Agent rule. Installed through NPM with:
 
