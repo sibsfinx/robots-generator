@@ -2,7 +2,7 @@
 
 Robots.txt generator for Node.js. Produces a simple, valid robots.txt to be parsed by web crawlers. Adheres to the [specification](https://developers.google.com/webmasters/control-crawl-index/docs/robots_txt) provided by Google, however currently only supports one User-Agent rule. Installed through NPM with:
 
-```
+```shell
 npm install robots-generator --save-dev
 ```
 
@@ -17,9 +17,8 @@ Simply require the module and execute it with an optional array of configuration
 
 Allow and Disallow can be an array, a string or null (not added to the file). Defaults are shown below:
 
-```
+```js
 var robots = require('robots-generator');
-
 robots({
   useragent: '*',
   allow: null,
