@@ -1,62 +1,37 @@
-/*jslint node:true, nomen:true*/
+const _ = require('underscore');
 
-(function () {
+(() => {
 
     'use strict';
 
-    var fs = require('fs'),
-        path = require('path'),
-        _ = require('underscore'),
-        mkdirp = require('mkdirp');
+    module.exports = function robots (params, next) {
 
-    module.exports = function (params) {
-
-        var options = _.defaults(params || {}, {
+        const options = _.defaults(params || {}, {
             useragent: '*',
-            allow: null,
-            disallow: 'cgi-bin/',
-            url: null,
-            out: null,
-            callback: null
-        });
+            allow: [],
+            disallow: ['cgi-bin/'],
+            sitemap: null
+        }),
+            configuration = [`User-agent: ${ options.useragent }`];
 
-        function add(name, rule, config) {
-            rule = (typeof rule === 'string' ? [rule] : rule);
-            _.each(rule, function (i) {
-                config += '\n' + name + ': ' + i;
-            });
-            return config;
+        if (options.allow.length) {
+            for (const a of options.allow) {
+                configuration.push(`Allow: ${ a }`);
+            }
         }
 
-        (function () {
-
-            var config = 'User-agent: ' + options.useragent;
-
-            config = add('Allow', options.allow, config);
-            config = add('Disallow', options.disallow, config);
-
-            if (options.url) {
-                config += '\nSitemap: ' + options.url + 'sitemap.xml';
+        if (options.disallow.length) {
+            for (const d of options.disallow) {
+                configuration.push(`Disallow: ${ d }`);
             }
+        }
 
-            if (options.out) {
-                mkdirp(path.dirname(options.out), function (err) {
-                    if (err) {
-                        throw err;
-                    }
-                    fs.writeFile(options.out, config, function (err) {
-                        if (options.callback) {
-                            return options.callback(err, config);
-                        }
-                        return;
-                    });
-                });
-            } else if (options.callback) {
-                return options.callback(null, config);
-            }
+        if (options.sitemap) {
+            configuration.push(`Sitemap: ${ options.url }sitemap.xml`);
+        }
 
-        }());
+        return next ? next(null, configuration) : true;
 
     };
 
-}());
+})();
