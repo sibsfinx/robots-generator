@@ -27,6 +27,20 @@ robots({
 });
 ```
 
+If you're using Gulp, this module scans your HTML for `<link rel="sitemap" />`. Example usage:
+
+```js
+gulp.task('default', function () {
+    gulp.src('index.html')
+        .pipe(robots.stream({
+            useragent: '*',
+            allow: ['folder1/', 'folder2/'],
+            disallow: ['cgi-bin/']
+        }))
+        .pipe(gulp.dest('robots.txt'));
+});
+```
+
 Outputs the following file:
 
 ```
