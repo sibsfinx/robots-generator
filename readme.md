@@ -17,10 +17,10 @@ Simply require the module and execute it with an optional array of configuration
 var robots = require('robots-generator');
 
 robots({
-  useragent: '*',
-  allow: ['folder1/', 'folder2/'],
-  disallow: ['cgi-bin/'],
-  sitemap: 'http://haydenbleasel.com/sitemap.xml',
+    useragent: '*',
+    allow: ['folder1/', 'folder2/'],
+    disallow: ['cgi-bin/'],
+    sitemap: 'http://haydenbleasel.com/sitemap.xml'
 }, function (error, robots) {
     // Join ('\n') and write this to a file
     console.log(error, robots);
