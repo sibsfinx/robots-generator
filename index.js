@@ -1,10 +1,13 @@
-const _ = require('underscore');
+const _ = require('underscore'),
+    through2 = require('through2'),
+    cheerio = require('cheerio'),
+    File = require('vinyl');
 
 (() => {
 
     'use strict';
 
-    module.exports = function robots (params, next) {
+    function robots (params, next) {
 
         const options = _.defaults(params || {}, {
             useragent: '*',
@@ -28,6 +31,40 @@ const _ = require('underscore');
 
         return next ? next(null, configuration) : true;
 
-    };
+    }
+
+    function stream (params) {
+
+        params = params || {};
+
+        return through2.obj((file, encoding, callback) => {
+
+            const $ = cheerio.load(file.contents.toString());
+
+            if (file.isNull()) {
+                return callback(null, file);
+            }
+
+            if (file.isStream()) {
+                return callback(new Error('Streaming not supported'));
+            }
+
+            params = params || {};
+            params.sitemap = $('link[rel="sitemap"]').attr('href');
+
+            robots(params, (error, config) =>
+                callback(error, new File({
+                    cwd: '/',
+                    base: '/',
+                    path: '/',
+                    contents: new Buffer(config.join('\n'))
+                })));
+
+        });
+
+    }
+
+    module.exports = robots;
+    module.exports.stream = stream;
 
 })();

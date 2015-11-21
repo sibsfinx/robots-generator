@@ -1,4 +1,4 @@
-const robots = require('./index.js'),
+const robots = require('../'),
     fs = require('fs');
 
 (() => {
@@ -11,7 +11,7 @@ const robots = require('./index.js'),
         sitemap: 'http://haydenbleasel.com/sitemap.xml'
     }, (error, config) => {
         console.log(error, config);
-        fs.writeFile('test/robots.txt', config.join('\n'), { encoding: 'utf8' }, (error2) =>
+        fs.writeFile('robots.txt', config.join('\n'), { encoding: 'utf8' }, (error2) =>
             console.log(error2));
     });
 

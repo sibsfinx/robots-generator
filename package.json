@@ -8,7 +8,7 @@
     "url": "https://github.com/haydenbleasel/robots-generator.git"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "cd test && node test.js && gulp"
   },
   "keywords": [
     "robots",
@@ -23,9 +23,13 @@
   },
   "homepage": "https://github.com/haydenbleasel/robots-generator",
   "dependencies": {
-    "underscore": "*"
+    "cheerio": "*",
+    "through2": "*",
+    "underscore": "*",
+    "vinyl": "*"
   },
   "devDependencies": {
-    "eslint": "*"
+    "eslint": "*",
+    "gulp": "*"
   }
 }
