@@ -15,15 +15,11 @@ const _ = require('underscore');
             configuration = [`User-agent: ${ options.useragent }`];
 
         if (options.allow.length) {
-            for (const a of options.allow) {
-                configuration.push(`Allow: ${ a }`);
-            }
+            _.each(options.allow, (a) => configuration.push(`Allow: ${ a }`));
         }
 
         if (options.disallow.length) {
-            for (const d of options.disallow) {
-                configuration.push(`Disallow: ${ d }`);
-            }
+            _.each(options.disallow, (d) => configuration.push(`Disallow: ${ d }`));
         }
 
         if (options.sitemap) {
