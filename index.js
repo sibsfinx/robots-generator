@@ -23,7 +23,7 @@ const _ = require('underscore');
         }
 
         if (options.sitemap) {
-            configuration.push(`Sitemap: ${ options.url }sitemap.xml`);
+            configuration.push(`Sitemap: ${ options.sitemap }`);
         }
 
         return next ? next(null, configuration) : true;
