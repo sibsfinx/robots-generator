@@ -30,9 +30,11 @@ robots({
 If you're using Gulp, this module scans your HTML for `<link rel="sitemap" />`. Example usage:
 
 ```js
+var robots = require('robots-generator').stream;
+
 gulp.task('default', function () {
     gulp.src('index.html')
-        .pipe(robots.stream({
+        .pipe(robots({
             useragent: '*',
             allow: ['folder1/', 'folder2/'],
             disallow: ['cgi-bin/']
