@@ -43,6 +43,12 @@ gulp.task('default', function () {
 });
 ```
 
+If you need an ES5 build for legacy purposes, just require the ES5 file:
+
+```js
+var robots = require('robots-generator/es5');
+```
+
 Outputs the following file:
 
 ```
@@ -51,4 +57,11 @@ Allow: /folder1/
 Allow: /folder2/
 Disallow: cgi-bin/
 Sitemap: http://haydenbleasel.com/sitemap.xml
+```
+
+To build the ES5 version:
+
+```sh
+npm install -g babel-cli babel-preset-es2015
+babel --presets es2015 index.js --out-file es5.js
 ```
