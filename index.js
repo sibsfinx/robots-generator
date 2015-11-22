@@ -1,4 +1,5 @@
-const _ = require('underscore'),
+const path = require('path'),
+    _ = require('underscore'),
     through2 = require('through2'),
     cheerio = require('cheerio'),
     File = require('vinyl');
@@ -53,9 +54,7 @@ const _ = require('underscore'),
 
             robots(params, (error, config) =>
                 callback(error, new File({
-                    cwd: '/',
-                    base: '/',
-                    path: '/',
+                    path: path.join(file.cwd, 'robots.txt'),
                     contents: new Buffer(config.join('\n'))
                 })));
 

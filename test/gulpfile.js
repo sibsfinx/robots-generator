@@ -12,6 +12,6 @@ const gulp = require('gulp'),
                 allow: ['folder1/', 'folder2/'],
                 disallow: ['cgi-bin/']
             }))
-            .pipe(gulp.dest('./robots-stream.txt')));
+            .pipe(gulp.dest('stream/')));
 
 })();

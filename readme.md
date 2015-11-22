@@ -39,7 +39,7 @@ gulp.task('default', function () {
             allow: ['folder1/', 'folder2/'],
             disallow: ['cgi-bin/']
         }))
-        .pipe(gulp.dest('robots.txt'));
+        .pipe(gulp.dest('dist/'));
 });
 ```
 

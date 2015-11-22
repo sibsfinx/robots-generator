@@ -82,4 +82,4 @@ $RECYCLE.BIN/
 
 ### Custom ###
 test/robots.txt
-test/robots-stream.txt
+test/stream/
