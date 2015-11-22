@@ -1,6 +1,6 @@
 {
   "name": "robots-generator",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Robots.txt generator for Node.js",
   "main": "index.js",
   "repository": {
@@ -29,6 +29,7 @@
     "vinyl": "*"
   },
   "devDependencies": {
+    "babel-preset-es2015": "*",
     "eslint": "*",
     "gulp": "*"
   }

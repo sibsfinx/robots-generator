@@ -62,6 +62,6 @@ Sitemap: http://haydenbleasel.com/sitemap.xml
 To build the ES5 version:
 
 ```sh
-npm install -g babel-cli babel-preset-es2015
+npm install -g babel-cli
 babel --presets es2015 index.js --out-file es5.js
 ```
