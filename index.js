@@ -49,7 +49,6 @@ const _ = require('underscore'),
                 return callback(new Error('Streaming not supported'));
             }
 
-            params = params || {};
             params.sitemap = $('link[rel="sitemap"]').attr('href');
 
             robots(params, (error, config) =>
