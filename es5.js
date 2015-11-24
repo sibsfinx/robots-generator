@@ -1,6 +1,7 @@
 'use strict';
 
-var _ = require('underscore'),
+var path = require('path'),
+    _ = require('underscore'),
     through2 = require('through2'),
     cheerio = require('cheerio'),
     File = require('vinyl');
@@ -53,14 +54,13 @@ var _ = require('underscore'),
                 return callback(new Error('Streaming not supported'));
             }
 
-            params = params || {};
-            params.sitemap = $('link[rel="sitemap"]').attr('href');
+            if (!params.sitemap) {
+                params.sitemap = $('link[rel="sitemap"]').attr('href');
+            }
 
             robots(params, function (error, config) {
                 return callback(error, new File({
-                    cwd: '/',
-                    base: '/',
-                    path: '/',
+                    path: path.join(file.cwd, 'robots.txt'),
                     contents: new Buffer(config.join('\n'))
                 }));
             });
