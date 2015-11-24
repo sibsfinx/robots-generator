@@ -19,3 +19,9 @@ gulp.task('default', function () {
         .pipe(gulp.dest('robots.txt'));
 });
 ```
+
+If you need an ES5 build for legacy purposes, just require the ES5 file:
+
+```js
+var robots = require('gulp-robots/es5');
+```

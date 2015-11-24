@@ -1,6 +1,6 @@
 {
   "name": "gulp-robots",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Robots.txt generator for Gulp",
   "main": "index.js",
   "repository": {
@@ -27,6 +27,7 @@
     "robots-generator": "*"
   },
   "devDependencies": {
+    "babel-preset-es2015": "*",
     "gulp": "*"
   }
 }
