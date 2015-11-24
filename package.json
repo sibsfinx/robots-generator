@@ -1,6 +1,6 @@
 {
   "name": "robots-generator",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "Robots.txt generator for Node.js",
   "main": "index.js",
   "repository": {

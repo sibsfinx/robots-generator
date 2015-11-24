@@ -50,7 +50,9 @@ const path = require('path'),
                 return callback(new Error('Streaming not supported'));
             }
 
-            params.sitemap = $('link[rel="sitemap"]').attr('href');
+            if (!params.sitemap) {
+                params.sitemap = $('link[rel="sitemap"]').attr('href');
+            }
 
             robots(params, (error, config) =>
                 callback(error, new File({
