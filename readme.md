@@ -9,6 +9,8 @@ npm install gulp-robots --save-dev
 Check out robots-generator for example options. This module scans your HTML for `<link rel="sitemap" />`. Example usage:
 
 ```js
+var robots = require('gulp-robots');
+
 gulp.task('default', function () {
     gulp.src('index.html')
         .pipe(robots({
