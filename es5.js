@@ -1,6 +1,6 @@
 'use strict';
 
-var robots = require('robots-generator').stream;
+var robots = require('robots-generator/es5').stream;
 
 (function () {
     'use strict';
