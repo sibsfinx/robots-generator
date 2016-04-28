@@ -27,7 +27,7 @@ const path = require('path'),
             _.each(options.disallow, (d) => configuration.push(`Disallow: ${ d }`));
         }
 
-        if (options.host.length) {
+        if (options.host) {
             configuration.push(`Host: ${ options.host }`);
         }
 
