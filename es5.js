@@ -7,6 +7,7 @@ var path = require('path'),
     File = require('vinyl');
 
 (function () {
+
     'use strict';
 
     function robots(params, next) {
@@ -15,7 +16,8 @@ var path = require('path'),
             useragent: '*',
             allow: [],
             disallow: ['cgi-bin/'],
-            sitemap: null
+            sitemap: null,
+            host: null
         }),
             configuration = ['User-agent: ' + options.useragent];
 
@@ -29,6 +31,10 @@ var path = require('path'),
             _.each(options.disallow, function (d) {
                 return configuration.push('Disallow: ' + d);
             });
+        }
+
+        if (options.host) {
+            configuration.push('Host: ' + options.host);
         }
 
         if (options.sitemap) {
