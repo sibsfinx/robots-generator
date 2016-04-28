@@ -8,7 +8,8 @@ const robots = require('../'),
     robots({
         url: 'http://haydenbleasel.com/',
         allow: ['folder1/', 'folder2/'],
-        sitemap: 'http://haydenbleasel.com/sitemap.xml'
+        sitemap: 'http://haydenbleasel.com/sitemap.xml',
+        host: 'haydenbleasel.com'
     }, (error, config) => {
         console.log(error, config);
         fs.writeFile('robots.txt', config.join('\n'), { encoding: 'utf8' }, (error2) =>

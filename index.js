@@ -14,7 +14,8 @@ const path = require('path'),
             useragent: '*',
             allow: [],
             disallow: ['cgi-bin/'],
-            sitemap: null
+            sitemap: null,
+            host: null
         }),
             configuration = [`User-agent: ${ options.useragent }`];
 
@@ -24,6 +25,10 @@ const path = require('path'),
 
         if (options.disallow.length) {
             _.each(options.disallow, (d) => configuration.push(`Disallow: ${ d }`));
+        }
+
+        if (options.host.length) {
+            configuration.push(`Host: ${ options.host }`);
         }
 
         if (options.sitemap) {
